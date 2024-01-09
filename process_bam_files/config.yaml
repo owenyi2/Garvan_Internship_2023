@@ -1,0 +1,10 @@
+enhancer_list: Candidate_Enhancer_List.bed
+promoter_list: Candidate_Promoter_List.bed
+features:
+    DNase: data/ENCFF134DLD.bam
+    H3K4me3: data/ENCFF855ZMQ.bam
+    CTCF: data/ENCFF162SWZ.bam
+    H3K27ac: data/ENCFF232RQF.bam
+    CAGE: data/ENCFF366MWI.bam
+results_dir: results
+
