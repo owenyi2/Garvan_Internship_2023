@@ -4,5 +4,6 @@ Dependencies:
   - pandas
 
 Run `preprocess` first to download and preprocess CRISPR interference dataset from ENCODE-E2G repo
+
 After:
   - Run `for_process_bam_file` to obtain `CandidateEnhancerList.bed` and `CandidatePromoterList.bed` as partial inputs for `process_bam_files`
