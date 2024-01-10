@@ -1,38 +1,12 @@
-# ENCODE E2G
-Generate [Encode E2G](https://github.com/karbalayghareh/ENCODE-E2G) input features based on [ABC](https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction) output
+This folder is an archive of https://github.com/EngreitzLab/ENCODE_rE2G frozen at commit 5069df668fd4958291a412d5276ef86916c67277 (14/12/2023)
+  - The original repo also used https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction/ as a submodule. We have it setup as a plain archive frozen at commit cb230435986d8c73f163c8d29b69fa438da82338
 
-Supports running ENCODE E2G with a pre-trained model. Put the pretrained model in the config, under `models_dir`
+This folder calculates the ABC score and overlaps it with a given reference .tsv of candidate EPI pairs. At the momement (Jan 2024), the original repo is currently under development which is why I have copied an archive at this point in time as a bandaid for our purposes so upstream changes don't affect us. When the original repo is stable, we'll have to go migrate this.
 
-## Usage
+The upstream repository handles a superset of tasks that we seek to do and some of our input files are slightly different to theirs. So this archive will include some small plumbing changes that are detailed below
+  1. H3K27ac support
+     - The upstream repository as it stands has extra functionality for testing out a predictive model for EPI as well. However as it stands, that functionality does not support H3K27ac. Throws error if a H3K27ac path is deteced in the H3K27ac column of ./config/config_biosamples_chr22.tsv. (See ./workflow/rules/utils.smk line 29), This is despite the fact that we may want to use H3K27ac only for the calculation of ABC score only which the ABC submodule does support. We make the following modifications
+       - Comment out exception throwing code in .workflow/rules/utils.smk (line 29)
+       - Add in H3K27ac file path in ./config/config_biosamples_chr22.tsv
 
-Clone the repo and set it up for submdoule usage
-```
-git clone --recurse-submodules https://github.com/EngreitzLab/ENCODE_rE2G.git
-git config --global submodule.recurse true
-```
-We use `ABC` as a submodule so this command will initialize it and sets up your git config to automatically keep the submodule up to date.
-
-Modify `config/config.yml` with your ABC biosamples config
-
-```
-mamba env create -f workflow/envs/encode_e2g.yml
-conda activate encode_e2g
-snakemake -j1 --use-conda
-```
-
-Output will show up in the `results/` directory
-
-
-
-
-
-## Supported Models
-
-We have pre-trained ENCODE-rE2G on certain model types. You can find them in the `models` directory.
-Each model must have the following:
-1. model pickle file
-2. feature table file
-3. threshold file
-
-The way we choose the model depends on the biosamples input. The code for model selection is in
-the utils.smk file, under the `_get_biosample_model_dir` function.
+ 
