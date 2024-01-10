@@ -14,7 +14,7 @@ chr_sizes: "reference/GRCh38_EBV.no_alt.chrom.sizes.tsv"
 ubiq_expr_genes: "reference/for_classifier_use_ubiquitous_expression_RefSeqCurated.170308.bed.CollapsedGeneBounds.hg38.TSS500bp.txt"
 
 # Filling new features into prediction file
-crispr_dataset: "reference/EPCrisprBenchmark_ensemble_data_GRCh38.tsv.gz"
+crispr_dataset: "reference/EPCrisprBenchmark_ensemble_data_reference.tsv"
 
 # ENCODE E2G
 MEGAMAP_HIC_FILE: https://s3.us-central-1.wasabisys.com/aiden-encode-hic-mirror/bifocals_iter2/tissues.hic

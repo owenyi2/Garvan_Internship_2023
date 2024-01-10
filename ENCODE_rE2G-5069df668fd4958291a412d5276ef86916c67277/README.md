@@ -11,5 +11,7 @@ The upstream repository handles a superset of tasks that we seek to do and some 
   2. Commenting/Uncommenting workflows used in ./workflow/Snakefile
      - Comment out to disable functionality for running and evaluating model
      - Uncomment in to enable functionality for producing ABC score and features for candidate EPI pairs instead
-
- 
+  3. Substituting in preprocessed EPCrisprBenchmark data instead of provided EPCrisprBenchmark data
+     - cp ../encode_e2g_original_dataset/for_ENCODE_rE2G/EPCrisprBenchmark_ensemble_data_reference.tsv ./reference/
+     - corrresponding edit to ./config/config.yaml in the `crispr_dataset` field
+     - The files are more or less the same. See ../encode_e2g_original_dataset/preprocess for transformations done. Apart from those, I think the two files are also sorted differently (e.g. lexical sort vs numerical)  
