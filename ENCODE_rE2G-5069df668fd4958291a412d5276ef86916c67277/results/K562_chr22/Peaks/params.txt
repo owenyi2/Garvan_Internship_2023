@@ -1,0 +1,11 @@
+narrowPeak /home/oweyi/Garvan_Internship_2023/ENCODE_rE2G-5069df668fd4958291a412d5276ef86916c67277/results/K562_chr22/Peaks/macs2_peaks.narrowPeak.sorted
+accessibility ['ABC/example_chr/chr22/ENCFF860XAE.chr22.sorted.se.bam']
+chrom_sizes /home/oweyi/Garvan_Internship_2023/ENCODE_rE2G-5069df668fd4958291a412d5276ef86916c67277/ABC/reference/hg38/GRCh38_EBV.no_alt.chrom.sizes.tsv
+chrom_sizes_bed /home/oweyi/Garvan_Internship_2023/ENCODE_rE2G-5069df668fd4958291a412d5276ef86916c67277/results/tmp/GRCh38_EBV.no_alt.chrom.sizes.tsv.bed
+outDir /home/oweyi/Garvan_Internship_2023/ENCODE_rE2G-5069df668fd4958291a412d5276ef86916c67277/results/K562_chr22/Peaks
+nStrongestPeaks 150000
+peakExtendFromSummit 250
+ignoreSummits False
+minPeakWidth 500
+regions_includelist ABC/example_chr/chr22/RefSeqCurated.170308.bed.CollapsedGeneBounds.chr22.hg38.TSS500bp.bed
+regions_blocklist /home/oweyi/Garvan_Internship_2023/ENCODE_rE2G-5069df668fd4958291a412d5276ef86916c67277/ABC/reference/hg38/GRCh38_unified_blacklist.bed
