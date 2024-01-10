@@ -1,0 +1,59 @@
+from snakemake.utils import min_version
+min_version("7.0")
+
+import pandas as pd
+import os
+import yaml
+
+
+configfile: "config/config.yaml"
+conda: "mamba"
+include: "rules/utils.smk"
+E2G_DIR_PATH = os.path.abspath(config["E2G_DIR_PATH"])
+config = make_paths_absolute(config, E2G_DIR_PATH)
+# Need to manually make results_dir an absolute path since above may
+# not work if results_dir folder isn't created
+# If results_dir is already an absolute path, this is a no-op
+config["results_dir"] = os.path.join(E2G_DIR_PATH, config["results_dir"])
+
+def get_abc_config(config):
+	abc_config_file = os.path.join(config["ABC_DIR_PATH"], "config/config.yaml")
+	with open(abc_config_file, 'r') as stream:
+		abc_config = yaml.safe_load(stream)
+	abc_config["ABC_DIR_PATH"] = config["ABC_DIR_PATH"]
+	abc_config["biosamplesTable"] = config["ABC_BIOSAMPLES"]
+	abc_config["results_dir"] = config["results_dir"]
+	return abc_config
+
+module ABC:
+	snakefile:
+		f"{config['ABC_DIR_PATH']}/workflow/Snakefile"
+	config: get_abc_config(config)
+
+use rule * from ABC exclude all as abc_*
+
+RESULTS_DIR = config["results_dir"]
+SCRIPTS_DIR = os.path.join(E2G_DIR_PATH, "workflow/scripts")
+BIOSAMPLE_DF = pd.read_csv(config["ABC_BIOSAMPLES"], sep="\t")
+BIOSAMPLES = BIOSAMPLE_DF["biosample"].to_list()
+BIOSAMPLE_ACTIVITES = {
+	biosample: activity for _, (biosample, activity) in 
+	BIOSAMPLE_DF[["biosample", "default_accessibility_feature"]].iterrows()
+}
+
+# These rules requires the variables above to be defined
+include: "rules/gen_new_features.smk"
+include: "rules/activity_only_features.smk"
+include: "rules/overlap_crispr.smk"
+include: "rules/predictions.smk"
+include: "rules/qc.smk"
+
+rule all:
+	input: 
+		expand(
+			os.path.join(RESULTS_DIR, "{biosample}", "Predictions", "encode_e2g_predictions.tsv.gz"), biosample=BIOSAMPLES
+		),
+		[os.path.join(RESULTS_DIR, f"{biosample}", "Metrics", f"encode_e2g_predictions_threshold{get_threshold(biosample)}_stats.tsv") for biosample in BIOSAMPLES],
+		# expand(
+		# 	os.path.join(RESULTS_DIR, "{biosample}", "EPCrisprBenchmark_ensemble_data_GRCh38.K562_ActivityOnly_features_{nafill}.tsv.gz"), nafill = ["withNA", "NAfilled"], biosample=BIOSAMPLES
+		# )
