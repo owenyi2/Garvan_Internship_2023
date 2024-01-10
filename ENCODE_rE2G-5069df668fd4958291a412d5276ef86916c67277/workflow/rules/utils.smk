@@ -26,8 +26,8 @@ def _get_biosample_model_dir(biosample):
 		raise Exception("No model found for powerlaw")
 		# return os.path.join(E2G_DIR_PATH, "models", f"{access_type}_powerlaw")
 	
-	if pd.notna(row["H3K27ac"]):
-		raise Exception("H3K27ac model not supported")
+#	if pd.notna(row["H3K27ac"]):
+#		raise Exception("H3K27ac model not supported")
 	
 	if row["HiC_type"] == "avg":
 		raise Exception("No model found for avg hic")
