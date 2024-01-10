@@ -8,5 +8,8 @@ The upstream repository handles a superset of tasks that we seek to do and some 
      - The upstream repository as it stands has extra functionality for testing out a predictive model for EPI as well. However as it stands, that functionality does not support H3K27ac. Throws error if a H3K27ac path is deteced in the H3K27ac column of ./config/config_biosamples_chr22.tsv. (See ./workflow/rules/utils.smk line 29), This is despite the fact that we may want to use H3K27ac only for the calculation of ABC score only which the ABC submodule does support. We make the following modifications
        - Comment out exception throwing code in .workflow/rules/utils.smk (line 29)
        - Add in H3K27ac file path in ./config/config_biosamples_chr22.tsv
+  2. Commenting/Uncommenting workflows used in ./workflow/Snakefile
+     - Comment out to disable functionality for running and evaluating model
+     - Uncomment in to enable functionality for producing ABC score and features for candidate EPI pairs instead
 
  
