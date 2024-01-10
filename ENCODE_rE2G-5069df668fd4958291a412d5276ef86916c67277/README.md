@@ -14,4 +14,7 @@ The upstream repository handles a superset of tasks that we seek to do and some 
   3. Substituting in preprocessed EPCrisprBenchmark data instead of provided EPCrisprBenchmark data
      - cp ../encode_e2g_original_dataset/for_ENCODE_rE2G/EPCrisprBenchmark_ensemble_data_reference.tsv ./reference/
      - corrresponding edit to ./config/config.yaml in the `crispr_dataset` field
-     - The files are more or less the same. See ../encode_e2g_original_dataset/preprocess for transformations done. Apart from those, I think the two files are also sorted differently (e.g. lexical sort vs numerical)  
+     - The files are more or less the same. See ../encode_e2g_original_dataset/preprocess for transformations done. Apart from those, I think the two files are also sorted differently (e.g. lexical sort vs numerical) 
+  4. Modify ./workflow/scripts/overlap_features_with_crispr_data.R
+     - Line 87 of this script removes columns containing "merged_..." e.g. merged_uid, merged_start, merged_end from the EPCrisprBenchmark reference file. But our version doesn't have that anyway so it throws a runtime error something along the lines of column not found
+     - So we just comment out that line  
