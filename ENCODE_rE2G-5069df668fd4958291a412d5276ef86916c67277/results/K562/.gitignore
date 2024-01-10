@@ -1,0 +1,12 @@
+# intermediate output from ENCODE_rE2G part of workflow
+final_features.tsv.gz
+NumCandidateEnhGene.tsv
+NumEnhancersEG5kb.txt
+NumTSSEnhGene.tsv
+SumEnhancersEG5kb.txt
+
+# intermediate output from ABC part of workflow
+Neighborhoods
+Predictions
+Peaks
+processed_genes_file.bed
