@@ -61,7 +61,11 @@ The upstream repository handles a superset of tasks that we seek to do and some 
 * original_README.md # This was the README.md file from the upstream repo. I've renamed it. It targets a slightly different usecase.
 * overall_env.yml 
 
-
+Snakemake provides a neat way to visualise the workflow and how everything fits together
+```
+snakemake --dag -F | dot -Tsvg > workflow_dag.svg
+```
+![workflow_dag](workflow_dag.svg)
 
 # Usage
 `./config/` is where most of your changes will be. `./data/` is a suggested place to put your input data e.g. H3K27ac and DNAse .bam files and .hic files, however the location does not matter too much because you can link any location on your machine inside the `./config/config_biosamples` TSV file
