@@ -17,23 +17,24 @@ negative_df = pd.read_csv(negative_path, sep="\t", names=["chr", "start", "end",
 # concat positive and negative pairs
 positive_df = PCHi_C_df[["chr", "start", "end", "TargetGene", "PCHi-C_Score"]]
 positive_df["Label"] = True
-print(len(positive_df), "positive pairs")
+num_positive = len(positive_df)
+print(num_positive, "positive pairs")
 
-negative_df["PCHi-C_score"] = np.nan
 negative_df["Label"] = False
-print(len(negative_df), "negative pairs")
+num_negative = len(negative_df)
+print(num_negative, "negative pairs")
 
 candidate_df = pd.concat([positive_df, negative_df])
 
 print(candidate_df)
 
-
 merge_df = candidate_df.merge(ABC_df, how="left", on=["chr", "start", "end", "TargetGene"])
 merge_df = merge_df[["chr", "start", "end", "TargetGene", "ABC.Score", "PCHi-C_Score", "Label"]]
+
 print("overlap with ABC in positive set")
-print(merge_df[merge_df["Label"]]["ABC.Score"].isna().sum())
+print(1 - merge_df[merge_df["Label"]]["ABC.Score"].isna().sum()/num_positive)
 print("overlap with ABC in negative set")
-print(merge_df[~merge_df["Label"]]["ABC.Score"].isna().sum())
+print(1 - merge_df[~merge_df["Label"]]["ABC.Score"].isna().sum()/num_negative)
 
 
 merge_df["ABC.Score"] = merge_df["ABC.Score"].fillna(0)
@@ -46,4 +47,4 @@ print(merge_df[merge_df["Label"]]["ABC.Score"].describe())
 print("negative set")
 print(merge_df[~merge_df["Label"]]["ABC.Score"].describe())
 
-merge_df.to_csv("output/ABC_annotated_candidate_pairs.tsv", sep="\t")
+merge_df.to_csv("output/ABC_annotated_candidate_pairs.tsv", index=None, sep="\t")
