@@ -1,10 +1,9 @@
 enhancer_list: Candidate_Enhancer_List.bed
 promoter_list: Candidate_Promoter_List.bed
 features:
-    DNase: data/ENCFF134DLD.bam
-    H3K4me3: data/ENCFF855ZMQ.bam
-    CTCF: data/ENCFF162SWZ.bam
-    H3K27ac: data/ENCFF232RQF.bam
-    CAGE: data/ENCFF366MWI.bam
-results_dir: results
+    DNase: ../LNCaP_run/ABC-Enhancer-Gene-Prediction-1.0.0/data/LNCaP_bam_files/USC20140207_DNase_LNCaP_24U.bam
+    H3K4me3: ../LNCaP_run/ABC-Enhancer-Gene-Prediction-1.0.0/data/LNCaP_bam_files/Marcel_LNCaP_H3K4me3.bam
+    CTCF: ../LNCaP_run/ABC-Enhancer-Gene-Prediction-1.0.0/data/LNCaP_bam_files/BGI20101108_LNCaP_CTCF.bam
+    H3K27ac: ../LNCaP_run/ABC-Enhancer-Gene-Prediction-1.0.0/data/LNCaP_bam_files/USC20130125_LNCaP_H3K27ac.bam 
+results_dir: LNCaP/results
 
