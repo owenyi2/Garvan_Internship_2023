@@ -28,7 +28,6 @@ dependencies:
   - gcc
   - gxx
   - zlib
-  - pip:
-    - sphinx_rtd_theme
-    - hic-straw
+  - sphinx_rtd_theme
+  - hic-straw
   

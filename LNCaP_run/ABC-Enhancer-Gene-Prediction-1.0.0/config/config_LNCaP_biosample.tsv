@@ -1,2 +1,2 @@
 biosample	DHS	ATAC	H3K27ac	default_accessibility_feature	HiC_file	HiC_type	HiC_resolution	alt_TSS	alt_genes
-LNCaP	data/LNCaP_bam_files/USC20140207_DNase_LNCaP_24U.bam		data/LNCaP_bam_files/USC20130125_LNCaP_H3K27ac.bam	DHS	../data/avg_hic_juicebox/	juicebox	5000	
+LNCaP	data/LNCaP_bam_files/USC20140207_DNase_LNCaP_24U.bam		data/LNCaP_bam_files/USC20130125_LNCaP_H3K27ac.bam	DHS	data/avg_hic_juicebox/	juicebox	5000	
