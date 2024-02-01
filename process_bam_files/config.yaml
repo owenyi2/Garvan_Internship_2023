@@ -7,4 +7,3 @@ features:
     H3K27ac: K562_crispri/data/ENCFF232RQF.bam
     CAGE: K562_crispri/data/ENCFF366MWI.bam
 results_dir: K562_crispri/results
-
