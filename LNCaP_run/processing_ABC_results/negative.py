@@ -5,8 +5,8 @@ EnhancerList = pd.read_csv("data/EnhancerList.bed", names = ["chr", "start", "en
 GeneList = pd.read_csv("data/GeneList.bed", names = ["chr", "start", "end", "TargetGene"], usecols=[0,1,2,3], sep="\t")
 positive_df = pd.read_csv("output/PCHi_C_matched", names = ["chr", "start", "end", "TargetGene"], usecols=[0,1,2,6], sep="\t")
 
-max_dist_from_gene = 1000_000
-frac_enhancers_sample = 0.1
+max_dist_from_gene = 750_000
+frac_enhancers_sample = 0.05
 
 # for each gene, sample some % of enhancers within certain distance
 enh_gene_list = []

@@ -25,19 +25,30 @@ num_negative = len(negative_df)
 print(num_negative, "negative pairs")
 
 candidate_df = pd.concat([positive_df, negative_df])
-
 print(candidate_df)
 
+# merge in ABC scores
 merge_df = candidate_df.merge(ABC_df, how="left", on=["chr", "start", "end", "TargetGene"])
 merge_df = merge_df[["chr", "start", "end", "TargetGene", "ABC.Score", "PCHi-C_Score", "Label"]]
 
+# merge in TSS coords
+geneTSS_df = pd.read_csv("../ABC-Enhancer-Gene-Prediction-1.0.0/reference/hg38/CollapsedGeneBounds.hg38.TSS500bp.bed", sep="\t", names = ["chrTSS","startTSS", "endTSS", "TargetGene"], usecols=[0,1,2,3], skiprows=1)
+merge_df = merge_df.merge(geneTSS_df, how="left", on = ["TargetGene"])
+
+# distance to TSS
+merge_df["distanceToTSS"] = np.abs((merge_df["start"]+merge_df["end"])//2 - (merge_df["startTSS"] + merge_df["endTSS"])//2)
+merge_df = merge_df[["chr", "start", "end", "chrTSS", "startTSS", "endTSS", "TargetGene", "distanceToTSS", "ABC.Score", "PCHi-C_Score", "Label"]] # reorder columns
+
+# % overlap with ABC score
 print("overlap with ABC in positive set")
 print(1 - merge_df[merge_df["Label"]]["ABC.Score"].isna().sum()/num_positive)
 print("overlap with ABC in negative set")
 print(1 - merge_df[~merge_df["Label"]]["ABC.Score"].isna().sum()/num_negative)
 
-
+# NA
 merge_df["ABC.Score"] = merge_df["ABC.Score"].fillna(0)
+print("missing values")
+print(merge_df.isna().any())
 
 print(merge_df)
 print(merge_df.columns)
