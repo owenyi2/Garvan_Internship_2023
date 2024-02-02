@@ -1,9 +1,10 @@
-enhancer_list: K562_crispri/Candidate_Enhancer_List.bed
-promoter_list: K562_crispri/Candidate_Promoter_List.bed
+enhancer_list: LNCaP/Candidate_Enhancer_List.bed
+promoter_list: LNCaP/Candidate_Promoter_List.bed
 features:
-    DNase: K562_crispri/data/ENCFF134DLD.bam
-    H3K4me3: K562_crispri/data/ENCFF855ZMQ.bam
-    CTCF: K562_crispri/data/ENCFF162SWZ.bam
-    H3K27ac: K562_crispri/data/ENCFF232RQF.bam
-    CAGE: K562_crispri/data/ENCFF366MWI.bam
-results_dir: K562_crispri/results
+    DNase: LNCaP/data/USC20140207_DNase_LNCaP_24U.bam
+    H3K4me3: LNCaP/data/Marcel_LNCaP_H3K4me3.bam
+    CTCF: LNCaP/data/BGI20101108_LNCaP_CTCF.bam 
+    H3K27ac: LNCaP/data/USC20130125_LNCaP_H3K27ac.bam
+results_dir: LNCaP/results
+
+

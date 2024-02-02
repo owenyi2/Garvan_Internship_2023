@@ -14,6 +14,7 @@ def count_bam(bed_file, bam_file, feature_name):
     return bed
 
 def normalised_counts(bed_file, bam_file, feature_name):
+    print("processing", bam_file)
     bed_df = count_bam(bed_file, bam_file, feature_name)
     command = ("samtools", "idxstats", bam_file)
 

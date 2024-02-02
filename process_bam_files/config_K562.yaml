@@ -1,0 +1,9 @@
+enhancer_list: K562_crispri/Candidate_Enhancer_List.bed
+promoter_list: K562_crispri/Candidate_Promoter_List.bed
+features:
+    DNase: K562_crispri/data/ENCFF134DLD.bam
+    H3K4me3: K562_crispri/data/ENCFF855ZMQ.bam
+    CTCF: K562_crispri/data/ENCFF162SWZ.bam
+    H3K27ac: K562_crispri/data/ENCFF232RQF.bam
+    CAGE: K562_crispri/data/ENCFF366MWI.bam
+results_dir: K562_crispri/results
