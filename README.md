@@ -3,6 +3,9 @@
 * encode_e2g_original_dataset
 * process_bam_files
 * using_ENFORMER
+* LNCaP_run
+
+# ENCODE K562 CRIPRi Set
 
 Start from `encode_e2g_original_dataset` to download and preprocess the CRISPRi benchmark dataset. This folder will derive from the preprocessed dataset, various input files for the following workflows
 - `process_bam_files`
@@ -13,3 +16,6 @@ Run each of the above workflows to produce various features to benchmark e.g. `p
 
 `analysing_output` combines and benchmarks the above features' effectiveness for predicting EPI using the CRISPRi benchmark dataset
 
+# Garvan LNCaP PCHi-C Set
+
+Start with `LNCaP_run` followed by `processing_bam_files` and then `analysing_output`

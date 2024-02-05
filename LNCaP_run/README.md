@@ -1,1 +1,2 @@
-ABC-Enhancer-Gene-Prediction-1.0.0 :: https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction/releases/tag/v1.0.0
+ABC-Enhancer-Gene-Prediction-1.0.0 :: downloaded from https://github.com/broadinstitute/ABC-Enhancer-Gene-Prediction/releases/tag/v1.0.0
+processing_ABC_results :: copy over `GeneList.bed`, `EnhancerList.bed`, `EnhancerPredictionsAllPutative.tsv.gz` from `ABC-Enhancer-Gene-Prediction-1.0.0/results` into `processing_ABC_results/data`. Run `processing_ABC_results/scripts.sh` followed by `processing_ABC_results/negative.py` followed by `processing_ABC_results/overlap.py` to get `processing_ABC_results/output/ABC_annotated_candidate_pairs.tsv` 
